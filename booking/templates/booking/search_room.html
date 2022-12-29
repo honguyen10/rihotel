@@ -1,0 +1,87 @@
+{% extends "booking/base.html" %}
+{% load static %}
+{% block body_block %}
+
+<div class="hero-wrap js-fullheight" style="background-image: url('{% static "booking/images/hotel_background.jpg" %}');">
+	<div class="overlay"></div>
+	<div class="container">
+	<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+		<div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+			<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{% url 'booking:index.html' %}">Trang chủ</a></span> <span>Phòng</span></p>
+			<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-family:garamond">Phòng lưu trú</h1>
+		</div>
+	</div>
+	</div>
+</div>
+
+<section class="ftco-section">
+	<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+		<div class="row">
+			{% for subcategory in subcategory_list %}
+				<div class="col-sm col-md-6 col-lg-6 ftco-animate">
+					<div class="destination">
+						<a href="{% url 'booking:room_detail.html' subcategory.pk %}" class="img img-2 d-flex justify-content-center align-items-center"
+							style="background-image: url('{{subcategory.image.url}}')">
+						</a>
+						<div class="text p-3">
+							<div class="d-flex">
+								<div class="one">
+									<h3><a  class="text-nowrap" href="{% url 'booking:room_detail.html' subcategory.pk %}">{{subcategory.name}}</a></h3>
+									<p class="rate">
+										<i class="icon-star"></i>
+										<i class="icon-star"></i>
+										<i class="icon-star"></i>
+										<i class="icon-star"></i>
+										<i class="icon-star-o"></i>
+										<span>8 Rating</span>
+									</p>
+								</div>
+								<div class="two">
+									<span class="price per-price">{% load humanize %}{{subcategory.default_price|floatformat:0|intcomma}}<br><small>/đêm</small></span>
+								</div>
+							</div>
+							<span style="font-family:'Times New Roman', Times, serif">Diện tích: {% load humanize %}{{subcategory.default_area|floatformat:0|intcomma}} m<sup>2</sup></span>
+							<p style="font-family:'Times New Roman', Times, serif">Sức chứa tối đa: {{subcategory.default_capacity}} người</p>
+							<hr>
+							<p class="bottom-area d-flex">
+								<form class="row row-cols-lg-auto g-3 align-items-center" action="{% url 'cart:cart_add' subcategory.id %}" method="POST">
+									{% csrf_token %}
+									<div class="col-md-3">
+									  <label for="inlineFormInputGroupUsername">Số phòng</label>
+									  {% for key, value in total_room.items %}
+									  {% if key == subcategory.id %}
+									  <span class="input-group">
+										<input type="number" class="form-control" id="inlineFormInputGroupUsername"
+											min="0" max="{{value}}" value="" name="room_quantity">
+									  </span>
+									  {% endif %}
+									  {% endfor %}
+									</div>
+								  
+									<div class="col-md-3">
+									  <label for="inlineFormSelectPref">Số khách</label>
+									  <div class="input-group">
+										<input type="number" class="form-control" id="inlineFormInputGroupUsername"
+										min="0" value="{{count_guests}}" name="count_guests">
+									  </div>
+									</div>
+								  
+									<div class="col-md-6">
+									  <button type="submit" class="btn btn-primary">Thêm vào giỏ hàng</button>
+									</div>
+								</form>
+							</p>
+						</div>
+					</div>
+				</div>
+
+			{% endfor %}
+		</div>
+		</div>
+	</div>
+	</div>
+</section> 
+
+{% endblock %}

@@ -1,0 +1,162 @@
+{% extends "booking/base.html" %}
+{% load static %}
+{% block body_block %}
+
+<div class="hero-wrap js-fullheight" style="background-image: url('{% static "booking/images/hotel_background.jpg" %}');">
+	<div class="overlay"></div>
+	<div class="container">
+	<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+		<div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+			<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{% url 'booking:index.html' %}">Trang chủ</a></span> <span>Giới thiệu</span></p>
+			<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-family:garamond">Giới thiệu</h1>
+		</div>
+	</div>
+	</div>
+</div>
+
+<section class="ftco-section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="intro">
+					<h3 style="font-family:arial; font-size:25px"><span>01</span> Tiện nghi</h3>
+					<p style="text-align:justify">Tại Ri Hotel, chúng tôi luôn cung cấp các dịch vụ đa dạng và chất lượng, giúp cho khách hàng có một kỳ nghỉ thoải mái và thuận lợi.</p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="intro">
+					<h3 style="font-family:arial; font-size:25px"><span>02</span> Thân thiện</h3>
+					<p style="text-align:justify">Đối với Ri Hotel, khách hàng là người thân trong gia đình, chúng tôi luôn mong muốn khách hàng sẽ có những khoảnh khắc tuyệt vời nhất, ý nghĩa nhất trong chuyến hành trình của mình.</p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="intro">
+					<h3 style="font-family:arial; font-size:25px"><span>03</span> Hiện đại</h3>
+					<p style="text-align:justify">Ri Hotel được đầu tư trang thiết bị nội thất cao cấp, với tiêu chuẩn Châu Âu đạt chất lượng cao, đảm bảo vận hành, cũng như đáp ứng được nhu cầu sử dụng của khách hàng trong quá trình lưu trú.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url('{% static "booking/images/bg_1.jpg" %}');" data-stellar-background-ratio="0.5">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-10">
+				<div class="row">
+				<div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate">
+				<div class="block-18 text-center">
+					<div class="text">
+					<strong class="number" data-number="30">0</strong>
+					<span style="font-size:20px">Khách sạn trên toàn quốc</span>
+					</div>
+				</div>
+				</div>
+				<div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate">
+				<div class="block-18 text-center">
+					<div class="text">
+					<strong class="number" data-number="3500">0</strong>
+					<span style="font-size:20px">Phòng lưu trú</span>
+					</div>
+				</div>
+				</div>
+				<div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate">
+				<div class="block-18 text-center">
+					<div class="text">
+					<strong class="number" data-number="990110">0</strong>
+					<span style="font-size:20px">Khách hàng hài lòng</span>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</section>
+		
+<section class="ftco-about d-md-flex" style="margin-top: 5em; margin-bottom: 5em;">
+	<div class="one-half img" style="background-image: url('{% static "booking/images/about_hotel.jpg" %}'); margin-left: 4em"></div>
+		<div class="one-half ftco-animate">
+			<div class="heading-section ftco-animate">
+				<h2 class="mb-4" style="font-family:cursive; font-size:40px">Quá trình thành lập</h2>
+			</div>
+			<br/>
+			<div style="font-size: 20px">
+				<h5>1996</h5>
+				<p style="font-family:sans-serif; margin-bottom: 3rem;">Người sáng lập tập đoàn Ri Group, Trần Nguyên Ân mở khách sạn đầu tiên tại Nha Trang, Khánh Hòa.</p>
+				<h5>1999</h5>
+				<p style="font-family:sans-serif; margin-bottom: 3rem;">Đàu tư và phát triển khách sạn thành khách sạn 5 sao.</p>
+				<h5>2004</h5>
+				<p style="font-family:sans-serif; margin-bottom: 3rem;">Chuỗi khách sạn được mở rộng ra các tỉnh Duyên hải Nam Trung Bộ.</p>
+				<h5>2009</h5>
+				<p style="font-family:sans-serif; margin-bottom: 3rem;">Được vinh danh là khách sạn có đóng góp to lớn trong việc thu hút khách du lịch của tỉnh Khánh Hòa.</p>
+				<h5>2014</h5>
+				<p style="font-family:sans-serif; margin-bottom: 3rem;">Mở rộng chuỗi khách sạn đến các tỉnh thành phía Bắc như Hà Nội, Hải Phòng, v.v.</p>
+				<h5>2018</h5>
+				<p style="font-family:sans-serif; margin-bottom: 3rem;">Chuỗi khách sạn tách ra thành công ty con và đổi tên thành Ri Hotel.</p>
+				<h5>2018 đến nay</h5>
+				<p style="font-family:sans-serif; margin-bottom: 3rem;">Tiếp tục đào tạo nhận lực và phát triển khách sạn vươn tầm thế giới.</p>
+			</div>
+		</div>
+</section>
+
+<section class="ftco-section testimony-section" style="background:#385851; padding:4em 0">
+	<div class="container">
+	<div class="row justify-content-center mb-15 pb-3">
+		<div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+			<h2 class="mb-4" style="font-family:serif"><b>Người điều hành</b></h2>
+		</div>
+	</div>
+	<div class="row ftco-animate">
+		<div class="col-md-12">
+		<div class="carousel-testimony owl-carousel ftco-owl">
+			
+			<div class="item">
+			<div class="testimony-wrap p-4 pb-5">
+				<div class="user-img mb-5" style="background-image: url('{% static "booking/images/person_7.jpg" %}')">
+				<span class="quote d-flex align-items-center justify-content-center">
+					<i class="icon-quote-left"></i>
+				</span>
+				</div>
+				<div class="text">
+				<p class="mb-5" style="text-align:justify">Chúng tôi rất vinh hạnh khi được là một phần trong hành trình của khách hàng.</p>
+				<p class="name">Trần Phương Uyên</p>
+				<span class="position">Tổng giám đốc Ri Hotel</span>
+				</div>
+			</div>
+			</div>
+			<div class="item">
+			<div class="testimony-wrap p-4 pb-5">
+				<div class="user-img mb-5" style="background-image: url('{% static "booking/images/person_3.jpg" %}')">
+				<span class="quote d-flex align-items-center justify-content-center">
+					<i class="icon-quote-left"></i>
+				</span>
+				</div>
+				<div class="text">
+				<p class="mb-5" style="text-align:justify">Hãy để mỗi vị khách lưu trú tại khách sạn cảm thấy thoải mái như đang ở nhà.</p>
+				<p class="name">Nguyễn Đức Tâm</p>
+				<span class="position">Cố vấn tập đoàn Ri Group</span>
+				</div>
+			</div>
+			</div>
+			<div class="item">
+				<div class="testimony-wrap p-4 pb-5">
+					<div class="user-img mb-5" style="background-image: url('{% static "booking/images/person_1.jpg" %}')">
+					<span class="quote d-flex align-items-center justify-content-center">
+						<i class="icon-quote-left"></i>
+					</span>
+					</div>
+					<div class="text">
+					<p class="mb-5" style="text-align:justify">Chúng tôi luôn nỗ lực đem đến cho khách hàng những trải nghiệm vượt ra ngoài giới hạn của dịch vụ.</p>
+					<p class="name">Trần Nguyên Ân</p>
+					<span class="position">Chủ tịch tập đoàn Ri Group</span>
+					</div>
+				</div>
+				</div>
+		</div>
+		</div>
+	</div>
+	</div>
+</section>
+
+{% endblock %}

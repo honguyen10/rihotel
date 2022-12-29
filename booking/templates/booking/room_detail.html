@@ -1,0 +1,69 @@
+{% extends "booking/base.html" %}
+{% load static %}
+{% block body_block %}
+
+<div class="hero-wrap js-fullheight" style="background-image: url('{% static "booking/images/hotel_background.jpg" %}');">
+	<div class="overlay"></div>
+	<div class="container">
+	<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+		<div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+			<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{% url 'booking:index.html' %}">Trang chủ</a></span> <span>Phòng</span></p>
+			<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-family:garamond">Phòng lưu trú</h1>
+		</div>
+	</div>
+	</div>
+</div>
+
+<section class="ftco-section ftco-degree-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-9">
+				<div class="row">
+					<div class="col-md-12 ftco-animate">
+						<div class="single-slider owl-carousel">
+							<div class="item">
+								<div class="hotel-img" style="background-image: url('{{selected_room.image.url}}')"></div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 offset-md-10">
+						<span type="submit" class="btn btn-primary"><a href="{% url 'booking:index.html' %}" style="color:#ffffff">Đặt phòng</a></span>
+					</div>
+					<div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
+						<span>Loại phòng</span>
+						<h2>{{selected_room.name}}</h2>
+						<div class="rate mb-5">
+							<span class="star">
+									<i class="icon-star"></i>
+									<i class="icon-star"></i>
+									<i class="icon-star"></i>
+									<i class="icon-star"></i>
+									<i class="icon-star-o"></i>
+									8 Rating
+							</span>
+						</div>
+						<p class="price per-price" style="font-size: 40px; color:#f19d00"><b>{% load humanize %}{{selected_room.default_price|floatformat:0|intcomma}}/đêm</b></p>
+						<div style="font-family:'Times New Roman', Times, serif">
+							<span>Diện tích: {% load humanize %}{{selected_room.default_area|floatformat:0|intcomma}} m<sup>2</sup></span>
+							<p>Sức chứa tối đa: {{selected_room.default_capacity}} người</p>
+						</div>
+						<hr>
+						<div class="quickview-peragraph" >
+							<p style="font-family:sans-serif"> {{selected_room.description|safe}} </p>
+						</div>
+					</div>
+				</div>
+			</div> 
+			<div class="col-lg-3">
+				<h3 class="heading mb-4" style="font-family: serif; font-size: 30px;">Loại phòng</h3>
+				<ul class="list-group list-group-flush">
+					{% for category in categories %}
+					<li class="list-group-item"><a href="{% url 'booking:room.html' category.id%}" style="color:black">{{category.name}}</a></li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}

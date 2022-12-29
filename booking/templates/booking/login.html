@@ -1,0 +1,79 @@
+{% extends "booking/base.html" %}
+{% load static %}
+{% block body_block %}
+
+<div class="hero-wrap js-fullheight" style="background-image: url('{% static "booking/images/hotel_background.jpg" %}');">
+	<div class="overlay"></div>
+	<div class="container">
+	<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+		<div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+			<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{% url 'booking:index.html' %}">Trang chủ</a></span> <span>Đăng nhập</span></p>
+			<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-family:garamond">Đăng nhập</h1>
+		</div>
+	</div>
+	</div>
+</div>
+
+<section class="ftco-section contact-section ftco-degree-bg">
+	<div class="container">
+		<div class="row d-flex mb-5 contact-info">
+			<div class="col-md-12 mb-4">
+			<h2 class="h4">Thông tin liên hệ</h2>
+			</div>
+			<div class="w-100"></div>
+			<div class="col-md-3">
+			<p><span>Địa chỉ:</span> 6A Quân Trấn, phường Lộc Thọ, Nha Trang, Khánh Hòa</p>
+			</div>
+			<div class="col-md-3">
+			<p><span>Điện thoại:</span> (0258) 3870177</p>
+			</div>
+			<div class="col-md-3">
+			<p><span>Email:</span> info@rihotel.com</p>
+			</div>
+			<div class="col-md-3">
+			<p><span>Website:</span> rihotel.com</p>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="contact-head">
+			<div class="row">
+				<div class="col-lg-8 col-12">
+					<div class="form-main">
+						<div class="title">
+							<h4>Đăng nhập</h4>
+						</div>
+						<form class="form" method="POST" action="{% url 'booking:login.html' %}">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-lg-6 col-12">
+									<div class="form-group">
+										<label style="font-family:sans-serif; color:black; font-size:18px">Username<span style="color:red">*</span></label>
+										<input name="username" type="text"/>
+									</div>
+								</div>
+								<div class="col-lg-6 col-12">
+									<div class="form-group">
+										<label style="font-family:sans-serif; color:black; font-size:18px">Mật khẩu<span style="color:red">*</span></label>
+										<input name="password" type="password"/>
+									</div>
+								</div>								
+								<div class="col-12">
+									<div class="form-group button">
+										<button type="submit" class="btn ">Đăng nhập</button>
+									</div>
+								</div>
+							</div>
+						</form>
+						<div class="title">
+							<h7 style="color:blue;">{% if login_result %} {{login_result}} {% endif %}</h6>			
+							<h7 style="color:red;">{% if logout_result %} {{logout_result}} {% endif %}</h6>												
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}

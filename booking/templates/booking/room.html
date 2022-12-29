@@ -1,0 +1,93 @@
+{% extends "booking/base.html" %}
+{% load static %}
+{% block body_block %}
+
+<div class="hero-wrap js-fullheight" style="background-image: url('{% static "booking/images/hotel_background.jpg" %}');">
+	<div class="overlay"></div>
+	<div class="container">
+	<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+		<div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+			<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{% url 'booking:index.html' %}">Trang chủ</a></span> <span>Phòng</span></p>
+			<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-family:garamond">Phòng lưu trú</h1>
+		</div>
+	</div>
+	</div>
+</div>
+
+<section class="ftco-section">
+	<div class="container">
+	<div class="row">
+		<div class="col-lg-3 sidebar order-md-last ftco-animate">
+			<div class="sidebar-wrap ftco-animate">
+				<h3 class="heading mb-4">Tìm phòng</h3>
+				<form action="{% url 'booking:price_filter.html' %}" method="GET" name="filter_price">
+					<div class="title" style="font-family: serif;">Phân loại</div>
+					<div class="fields">
+					<div class="form-group">
+					<div class="select-wrap one-third">
+					<div class="icon"><span class="ion-ios-arrow-down"></span></div>
+					<select name="category_id" id="" class="form-control">
+						{% for category in categories %}
+						<option value="{{category.id}}" selected="selected">{{category.name}}</option>
+						{% endfor %}
+						<option value="0" selected="selected">Tất cả</option>
+					</select>
+					</div>
+					</div>
+					<div class="title" style="font-family: serif;">Khoảng giá</div>
+					<div class="form-group">
+		                <input class="form-control" pattern="[1-9][0-9]{4,}" placeholder="Giá từ" name="price_from">
+		            </div>
+		            <div class="form-group">
+		                <input class="form-control" pattern="[1-9][0-9]{4,}" placeholder="Giá đến" name="price_to" >
+		            </div>
+					<div class="form-group">
+						<input type="submit" value="Tìm phòng" class="btn btn-primary py-3 px-5">
+					</div>
+				</div>
+			</form>
+			</div>
+		</div>
+		
+		<div class="col-lg-9">
+		<div class="row">
+			{% for subcategory in subcategory_list %}
+				<div class="col-sm col-md-6 col-lg-6 ftco-animate">
+					<div class="destination">
+						<a href="{% url 'booking:room_detail.html' subcategory.pk %}" class="img img-2 d-flex justify-content-center align-items-center"
+							style="background-image: url('{{subcategory.image.url}}')">
+						</a>
+						<div class="text p-3">
+							<div class="d-flex">
+								<div class="one">
+									<h3><a  class="text-nowrap" href="{% url 'booking:room_detail.html' subcategory.pk %}">{{subcategory.name}}</a></h3>
+									<p class="rate">
+										<i class="icon-star"></i>
+										<i class="icon-star"></i>
+										<i class="icon-star"></i>
+										<i class="icon-star"></i>
+										<i class="icon-star-o"></i>
+										<span>8 Rating</span>
+									</p>
+								</div>
+								<div class="two">
+									<span class="price per-price">{% load humanize %}{{subcategory.default_price|floatformat:0|intcomma}}<br><small>/đêm</small></span>
+								</div>
+							</div>
+							<span style="font-family:'Times New Roman', Times, serif">Diện tích: {% load humanize %}{{subcategory.default_area|floatformat:0|intcomma}} m<sup>2</sup></span>
+							<p style="font-family:'Times New Roman', Times, serif">Sức chứa tối đa: {{subcategory.default_capacity}} người</p>
+							<hr>
+							<p class="bottom-area d-flex">
+								<span class="ml-auto"><a href="{% url 'booking:index.html' %}">Đặt phòng</a></span>
+							</p>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		</div>
+	</div>
+	</div>
+</section> 
+
+{% endblock %}

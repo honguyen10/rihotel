@@ -1,0 +1,79 @@
+{% extends "booking/base.html" %}
+{% load static %}
+{% block body_block %}
+
+<div class="hero-wrap js-fullheight" style="background-image: url('{% static "booking/images/hotel_background.jpg" %}');">
+	<div class="overlay"></div>
+	<div class="container">
+	<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
+		<div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+			<p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{% url 'booking:index.html' %}">Trang chủ</a></span> <span>Liên hệ</span></p>
+			<h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-family:garamond">Liên hệ</h1>
+		</div>
+	</div>
+	</div>
+</div>
+
+<section class="ftco-section contact-section ftco-degree-bg">
+	<div class="container">
+	<div class="row d-flex mb-5 contact-info">
+		<div class="col-md-12 mb-4">
+		<h2 class="h4">Thông tin liên hệ</h2>
+		</div>
+		<div class="w-100"></div>
+		<div class="col-md-3">
+		<p><span>Địa chỉ:</span> 6A Quân Trấn, phường Lộc Thọ, Nha Trang, Khánh Hòa</p>
+		</div>
+		<div class="col-md-3">
+		<p><span>Điện thoại:</span> (0258) 3870177</p>
+		</div>
+		<div class="col-md-3">
+		<p><span>Email:</span> info@rihotel.com</p>
+		</div>
+		<div class="col-md-3">
+		<p><span>Website:</span> rihotel.com</p>
+		</div>
+	</div>
+	<div class="row d-flex mb-5 contact-info">
+		<h6 style="font-family: Verdana; color:blue; font-size: 20px; font-weight: bold;">{{result}}</h6>
+		<h6>{{form.errors}}</h6>
+	</div>
+	<div class="row block-9">
+		<div class="col-md-6 order-md-last pr-md-5">
+			<form id="fh5co_contact_form" action="{% url 'booking:contact.html' %}" method="POST">
+				{% csrf_token %}
+				<div class="form-group">
+					<label style="font-family:fangsong; color: #000000; font-size:20px">Họ tên:</label>
+					{{form.name}}
+				</div>
+				<div class="form-group">
+					<label style="font-family:fangsong; color: #000000; font-size:20px">Số điện thoại:</label>
+					{{form.phone}}
+				</div>
+				<div class="form-group">
+					<label style="font-family:fangsong; color: #000000; font-size:20px">Email:</label>
+					{{form.email}}
+				</div>
+				<div class="form-group">
+					<label style="font-family:fangsong; color: #000000; font-size:20px">Tiêu đề:</label>
+					{{form.subject}}
+				</div>
+				<div class="form-group">
+					<label style="font-family:fangsong; color: #000000; font-size:20px">Nội dung:</label>
+					{{form.message}}
+				</div>
+				<div class="form-group">
+					<input style="font-family:fangsong; font-weight:bold; font-size:20px;" type="submit" value="Gửi" class="btn btn-primary py-3 px-5">
+				</div>
+			</form>
+		</div>
+		
+		<div class="col-md-6">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3899.2051726144027!2d109.1938498154073!3d12.234382791342604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31706764c4fab81d%3A0x2945c9cd2233d2b5!2zNmEgUXXDom4gVHLDosyBbiwgTOG7mWMgVGjhu40sIE5oYSBUcmFuZywgS2jDoW5oIEjDsmEgNjUwMDAwLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1660467660174!5m2!1svi!2s" width="500" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		</div>
+
+	</div>
+	</div>
+</section>
+
+{% endblock %}
